@@ -4,12 +4,8 @@ from flask import Flask, jsonify
 application = Flask(__name__)
 
 @application.route('/')
-def health_check():
-    # Ruta base para que el Load Balancer verifique que el servidor está vivo
-return jsonify({"entorno":"Produccion-Beanstalk (Actualizado)",
-    "estado":"Activo",
-    "servicio":"SaludNexa Core API",
-    "version":"2.0.0"})
+def index():
+    return jsonify({"entorno":"Produccion-Beanstalk (Actualizado)","estado":"Activo","servicio":"SaludNexa Core API","version":"2.0.0"})
 
 @application.route('/api/v1/pacientes')
 def get_pacientes():
