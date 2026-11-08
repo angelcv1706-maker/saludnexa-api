@@ -1,0 +1,9 @@
+# Ignorar el directorio de plugins de Terraform
+.terraform/
+
+# Ignorar los archivos de estado (contienen información sensible de AWS)
+*.tfstate
+*.tfstate.backup
+
+# Ignorar los bloqueos de dependencias
+.terraform.lock.hcl
