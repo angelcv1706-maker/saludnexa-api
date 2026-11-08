@@ -6,12 +6,10 @@ application = Flask(__name__)
 @application.route('/')
 def health_check():
     # Ruta base para que el Load Balancer verifique que el servidor está vivo
-    return jsonify({
-        "estado": "Activo",
-        "servicio": "SaludNexa Core API",
-        "version": "1.0.0",
-        "entorno": "Produccion-Beanstalk"
-    })
+return jsonify({"entorno":"Produccion-Beanstalk (Actualizado)",
+    "estado":"Activo",
+    "servicio":"SaludNexa Core API",
+    "version":"2.0.0"})
 
 @application.route('/api/v1/pacientes')
 def get_pacientes():
@@ -20,7 +18,14 @@ def get_pacientes():
         {"id": 1, "nombre": "Carlos Rojas", "edad": 45, "diagnostico": "Hipertensión"},
         {"id": 2, "nombre": "María López", "edad": 32, "diagnostico": "Chequeo general"}
     ]
-    return jsonify({"success": True, "data": pacientes})
+    return jsonify({
+    "success": True,
+    "data": [
+        {"id": 1, "nombre": "Carlos Rojas", "edad": 45, "diagnostico": "Hipertensión"},
+        {"id": 2, "nombre": "María López", "edad": 32, "diagnostico": "Chequeo general"},
+        {"id": 3, "nombre": "Angel Culquichicon", "edad": 28, "diagnostico": "Asma severa"} 
+    ]
+    })
 
 @application.route('/api/v1/citas')
 def get_citas():
